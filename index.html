@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery - Subhrant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="full-img" id="fullImgBox">
+        <span class="close" onclick="closeFullImg()">×</span>
+        <button class="nav left" onclick="showPrev()">❮</button>
+        <img src="images/img1.jpeg" id="fullImg">
+        <button class="nav right" onclick="showNext()">❯</button>
+    </div>
+
+    <div class="img-gallery" id="gallery">
+        <img src="images/img1.jpeg" onclick="openFullImg(0)">
+        <img src="images/img2.jpeg" onclick="openFullImg(1)">
+        <img src="images/img3.jpeg" onclick="openFullImg(2)">
+        <img src="images/img4.jpeg" onclick="openFullImg(3)">
+        <img src="images/img5.jpeg" onclick="openFullImg(4)">
+        <img src="images/img6.jpeg" onclick="openFullImg(5)">
+        <img src="images/img7.jpeg" onclick="openFullImg(6)">
+        <img src="images/img8.jpeg" onclick="openFullImg(7)">
+        <img src="images/img9.jpeg" onclick="openFullImg(8)">
+        <img src="images/img10.jpeg" onclick="openFullImg(9)">
+        <img src="images/img11.jpeg" onclick="openFullImg(10)">
+        <img src="images/img12.jpeg" onclick="openFullImg(11)">
+        <img src="images/img13.jpeg" onclick="openFullImg(12)">
+        <img src="images/img14.jpeg" onclick="openFullImg(13)">
+        <img src="images/img15.jpeg" onclick="openFullImg(14)">
+        <img src="images/img16.jpeg" onclick="openFullImg(15)">
+        <img src="images/img17.jpeg" onclick="openFullImg(16)">
+        <img src="images/img18.jpeg" onclick="openFullImg(17)">
+        <img src="images/img19.jpeg" onclick="openFullImg(18)">
+        <img src="images/img20.jpeg" onclick="openFullImg(19)">
+    </div>
+
+<script>
+    const fullImgBox = document.getElementById("fullImgBox");
+    const fullImg = document.getElementById("fullImg");
+    const galleryImages = document.querySelectorAll(".img-gallery img");
+    let currentIndex = 0;
+
+    function openFullImg(index) {
+        currentIndex = index;
+        fullImgBox.style.display = "flex";
+        fullImg.src = galleryImages[index].src;
+    }
+
+    function closeFullImg() {
+        fullImgBox.style.display = "none";
+    }
+
+    function showNext() {
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+        fullImg.src = galleryImages[currentIndex].src;
+    }
+
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        fullImg.src = galleryImages[currentIndex].src;
+    }
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeFullImg();
+        if (e.key === "ArrowRight") showNext();
+        if (e.key === "ArrowLeft") showPrev();
+    });
+</script>
+
+</body>
+</html>
